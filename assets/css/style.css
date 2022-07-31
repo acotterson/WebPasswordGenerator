@@ -118,6 +118,15 @@ button[disabled] {
   overflow: hidden;
 }
 
+.error-msg {
+  background-color: transparent;
+  font-size: .7rem;
+  line-height: 1.17647rem;
+  padding-top: 4px 8px;
+  color: #f0162f;
+  padding-left: 0;
+}
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
