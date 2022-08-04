@@ -72,6 +72,7 @@ header {
   clear: both;
 }
 
+/* generate password button */
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
@@ -118,6 +119,8 @@ button[disabled] {
   overflow: hidden;
 }
 
+/* password criteria error messages */
+/* https://login.yahoo.com/ */
 .error-msg {
   background-color: transparent;
   font-size: .7rem;
@@ -127,6 +130,7 @@ button[disabled] {
   padding-left: 0;
 }
 
+/* responsive changes */
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;

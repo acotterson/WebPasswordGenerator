@@ -1,7 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-
+// generates a list of all possible characters based on criteria and randomly selects
+// from the list to fill a string of the user-specified length
 function generatePassword(checkValues, passLen) {
   var password = '';
   var validValues = '';
