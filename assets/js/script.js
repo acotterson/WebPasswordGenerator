@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// https://www.techiedelight.com/dynamically-create-checkbox-with-javascript/
+
 function generatePassword(checkValues, passLen) {
   var password = '';
   var validValues = '';
@@ -15,100 +15,99 @@ function generatePassword(checkValues, passLen) {
     validValues += 'q w e r t y u i o p a s d f g h j k l z x c v b n m ';
   }
   if (checkValues.includes("special")) {
-    validValues += String.raw`! @ # $ % ^ & * ( ) _ + = - { [ } ] : ; " ' | \ < , > . ? / `;
+    validValues += String.raw `! @ # $ % ^ & * ( ) _ + = - { [ } ] : ; " ' | \ < , > . ? / `;
   }
   validValues = validValues.split(' ');
-  
+
   for (var i = 0; i < passLen; i++) {
-    password += validValues[Math.floor(Math.random()*validValues.length)];
+    password += validValues[Math.floor(Math.random() * validValues.length)];
   }
   writePassword(password);
 }
 
-function generatePrompts() {
-  var container = document.getElementById('container');
-  if (container.innerHTML === "") {
-    var lowCharCheck = document.createElement('input');
-    lowCharCheck.type = 'checkbox';
-    lowCharCheck.id = 'lowercase';
-    lowCharCheck.name = 'charSelect';
-    lowCharCheck.value = 'lowercase';
+// create checkboxes and number input
+// https://www.techiedelight.com/dynamically-create-checkbox-with-javascript/
+function generatePrompts(container) {
+  var lowCharCheck = document.createElement('input');
+  lowCharCheck.type = 'checkbox';
+  lowCharCheck.id = 'lowercase';
+  lowCharCheck.name = 'charSelect';
+  lowCharCheck.value = 'lowercase';
 
-    var labelLower = document.createElement('label')
-    labelLower.htmlFor = 'lowercase';
-    labelLower.appendChild(document.createTextNode('Lower Case'));
+  var labelLower = document.createElement('label')
+  labelLower.htmlFor = 'lowercase';
+  labelLower.appendChild(document.createTextNode('Lower Case'));
 
-    var uppCharCheck = document.createElement('input');
-    uppCharCheck.type = 'checkbox';
-    uppCharCheck.id = 'uppercase';
-    uppCharCheck.name = 'charSelect';
-    uppCharCheck.value = 'uppercase';
+  var uppCharCheck = document.createElement('input');
+  uppCharCheck.type = 'checkbox';
+  uppCharCheck.id = 'uppercase';
+  uppCharCheck.name = 'charSelect';
+  uppCharCheck.value = 'uppercase';
 
-    var labelUpper = document.createElement('label')
-    labelUpper.htmlFor = 'uppercase';
-    labelUpper.appendChild(document.createTextNode('Upper Case'));
+  var labelUpper = document.createElement('label')
+  labelUpper.htmlFor = 'uppercase';
+  labelUpper.appendChild(document.createTextNode('Upper Case'));
 
-    var numCharCheck = document.createElement('input');
-    numCharCheck.type = 'checkbox';
-    numCharCheck.id = 'numbers';
-    numCharCheck.name = 'charSelect';
-    numCharCheck.value = 'numbers';
+  var numCharCheck = document.createElement('input');
+  numCharCheck.type = 'checkbox';
+  numCharCheck.id = 'numbers';
+  numCharCheck.name = 'charSelect';
+  numCharCheck.value = 'numbers';
 
-    var labelNum = document.createElement('label')
-    labelNum.htmlFor = 'numbers';
-    labelNum.appendChild(document.createTextNode('Numbers'));
+  var labelNum = document.createElement('label')
+  labelNum.htmlFor = 'numbers';
+  labelNum.appendChild(document.createTextNode('Numbers'));
 
-    var specCharCheck = document.createElement('input');
-    specCharCheck.type = 'checkbox';
-    specCharCheck.id = 'special';
-    specCharCheck.name = 'charSelect';
-    specCharCheck.value = 'special';
+  var specCharCheck = document.createElement('input');
+  specCharCheck.type = 'checkbox';
+  specCharCheck.id = 'special';
+  specCharCheck.name = 'charSelect';
+  specCharCheck.value = 'special';
 
-    var labelSpec = document.createElement('label')
-    labelSpec.htmlFor = 'special';
-    labelSpec.appendChild(document.createTextNode('Special Characters'));
+  var labelSpec = document.createElement('label')
+  labelSpec.htmlFor = 'special';
+  labelSpec.appendChild(document.createTextNode('Special Characters'));
 
-    var lengthSelect = document.createElement('input');
-    lengthSelect.type = 'number';
-    lengthSelect.id = 'passLength';
-    lengthSelect.name = 'passLength';
-    lengthSelect.value = '8';
-    lengthSelect.min = '8';
-    lengthSelect.max = '128';
+  var lengthSelect = document.createElement('input');
+  lengthSelect.type = 'number';
+  lengthSelect.id = 'passLength';
+  lengthSelect.name = 'passLength';
+  lengthSelect.value = '8';
+  lengthSelect.min = '8';
+  lengthSelect.max = '128';
 
-    var labelLength = document.createElement('label');
-    labelLength.htmlFor = 'passLength';
-    labelLength.appendChild(document.createTextNode('Password Length:'));
+  var labelLength = document.createElement('label');
+  labelLength.htmlFor = 'passLength';
+  labelLength.appendChild(document.createTextNode('Password Length:'));
 
-    var submitBtn = document.createElement('input');
-    submitBtn.type = 'submit';
-    submitBtn.value = 'Submit';
+  var submitBtn = document.createElement('input');
+  submitBtn.type = 'submit';
+  submitBtn.value = 'Submit';
 
-    container.appendChild(lowCharCheck);
-    container.appendChild(labelLower);
-    container.appendChild(document.createElement('br'));
-    container.appendChild(uppCharCheck);
-    container.appendChild(labelUpper);
-    container.appendChild(document.createElement('br'));
-    container.appendChild(numCharCheck);
-    container.appendChild(labelNum);
-    container.appendChild(document.createElement('br'));
-    container.appendChild(specCharCheck);
-    container.appendChild(labelSpec);
-    container.appendChild(document.createElement('br'));
-    container.appendChild(labelLength);
-    container.appendChild(lengthSelect);
-    // container.appendChild(document.createElement('br'));
-    // container.appendChild(submitBtn);
-    // submitBtn.addEventListener("click", checkInput)
-    container.onclick = function(event) {
-      if (event.target.tagName == 'INPUT') {
-        checkInput();
-      }
+  container.appendChild(lowCharCheck);
+  container.appendChild(labelLower);
+  container.appendChild(document.createElement('br'));
+  container.appendChild(uppCharCheck);
+  container.appendChild(labelUpper);
+  container.appendChild(document.createElement('br'));
+  container.appendChild(numCharCheck);
+  container.appendChild(labelNum);
+  container.appendChild(document.createElement('br'));
+  container.appendChild(specCharCheck);
+  container.appendChild(labelSpec);
+  container.appendChild(document.createElement('br'));
+  container.appendChild(labelLength);
+  container.appendChild(lengthSelect);
+
+  // set up any click on inputs (assumed to be a change to the criteria) to update the password
+  container.onclick = function (event) {
+    if (event.target.tagName == 'INPUT') {
+      checkInput();
     }
   }
 }
 
+// make sure inputs are valid
 function checkInput() {
   const passLen = document.querySelector('#passLength').value;
 
@@ -167,14 +166,22 @@ function checkInput() {
   }
 }
 
-
-
-
 // Write password to the #password input
 function writePassword(password) {
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", generatePrompts);
+// Add event listener to generate button to generate a new password or, on first click, generate prompts
+generateBtn.addEventListener(
+  "click",
+  () => {
+    var container = document.getElementById('container');
+    // only generate promts if they haven't been generated yet, otherwise generate a new password
+    if (container.innerHTML === "") {
+      generatePrompts(container);
+    } else {
+      checkInput();
+    };
+  }
+);
